@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 
-import 'package:quraanapp/features/quraan/Surah_Details/ui/widgets/surah_details_screen.dart';
-import 'package:quraanapp/features/quraan/home/ui/home_screen.dart';
+import 'package:quraanapp/features/quraan/presentation/Surah_Details/surah_details_screen.dart';
+import 'package:quraanapp/features/quraan/presentation/home/home_screen.dart';
 
 
 abstract class AppRoute {

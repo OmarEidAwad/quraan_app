@@ -27,7 +27,7 @@ class TextStyles {
     color: ColorsManager.gray,
   );
   static TextStyle font20PurpleBold = TextStyle(
-    fontSize: 20.sp,
+    fontSize: 22.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.mainPurple,
   );
@@ -80,9 +80,33 @@ class TextStyles {
     fontWeight: FontWeightHelper.bold,
     color: Colors.white,
   );
+
+  static TextStyle font20BlackBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.black,
+  );
+
+  static TextStyle font16Whitemedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: Colors.white,
+  );
   static TextStyle font22WhiteExtraBold = TextStyle(
     fontSize: 22.sp,
     fontWeight: FontWeightHelper.extraBold,
+    color: Colors.white,
+  );
+
+  static TextStyle font26WhiteExtraBold = TextStyle(
+    fontSize: 26.sp,
+    fontWeight: FontWeightHelper.extraBold,
+    color: Colors.white,
+  );
+
+  static TextStyle font26WhiteBold = TextStyle(
+    fontSize: 26.sp,
+    fontWeight: FontWeightHelper.bold,
     color: Colors.white,
   );
 }

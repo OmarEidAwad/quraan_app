@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:quraanapp/core/theiming/colors.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
 
 class CustomHomeCard extends StatelessWidget {
@@ -12,6 +13,14 @@ class CustomHomeCard extends StatelessWidget {
       width: double.infinity,
       height: 130.h,
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: ColorsManager.mainPurple.withOpacity(0.5),
+            spreadRadius: 4,
+            blurRadius: 12,
+            offset: const Offset(0, 6), // changes position of shadow
+          ),
+        ],
         borderRadius: BorderRadius.circular(10.r),
         image: DecorationImage(
           image: AssetImage("assets/images/images_png/surah_background.png"),

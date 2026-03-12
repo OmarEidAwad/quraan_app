@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quraanapp/features/quraan/home/ui/widgets/surah_section/custom_surah_card.dart';
+import 'package:quraanapp/features/quraan/presentation/home/widgets/surah_section/custom_surah_card.dart';
 
 class SurahListPage extends StatelessWidget {
   const SurahListPage({super.key});

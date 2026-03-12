@@ -25,7 +25,7 @@ class SurahDetailsScreenBody extends StatelessWidget {
           ),
           verticalSpace(28),
           CustomAyatCard(),
-          verticalSpace(28),
+          verticalSpace(32),
           Expanded(child: CustomAyatListView()),
         ],
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quraanapp/core/theiming/colors.dart';
-import 'package:quraanapp/features/home/ui/widgets/custom_app_bar.dart';
+import 'package:quraanapp/features/quraan/home/ui/widgets/custom_app_bar.dart';
 
 class SurahDetailsScreenBody extends StatelessWidget {
   const SurahDetailsScreenBody({super.key});

@@ -4,11 +4,11 @@ import 'package:quraanapp/core/helpers/spacing.dart';
 import 'package:quraanapp/core/theiming/colors.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
 import 'package:quraanapp/core/widgets/custom_tab_bar.dart';
-import 'package:quraanapp/features/home/ui/widgets/custom_app_bar.dart';
-import 'package:quraanapp/features/home/ui/widgets/custom_home_card.dart';
-import 'package:quraanapp/features/home/ui/widgets/juz_section/juz_list_page.dart';
-import 'package:quraanapp/features/home/ui/widgets/page_section/page_list_page.dart';
-import 'package:quraanapp/features/home/ui/widgets/surah_section/surah_list_page.dart';
+import 'package:quraanapp/features/quraan/home/ui/widgets/custom_app_bar.dart';
+import 'package:quraanapp/features/quraan/home/ui/widgets/custom_home_card.dart';
+import 'package:quraanapp/features/quraan/home/ui/widgets/juz_section/juz_list_page.dart';
+import 'package:quraanapp/features/quraan/home/ui/widgets/page_section/page_list_page.dart';
+import 'package:quraanapp/features/quraan/home/ui/widgets/surah_section/surah_list_page.dart';
 
 class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({super.key});

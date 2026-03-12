@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:quraanapp/core/theiming/colors.dart';
-import 'package:quraanapp/features/quraan/home/ui/widgets/custom_app_bar.dart';
+import 'package:quraanapp/core/helpers/spacing.dart';
+import 'package:quraanapp/features/quraan/presentation/Surah_Details/widgets/custom_ayat_card.dart';
+import 'package:quraanapp/features/quraan/presentation/Surah_Details/widgets/custom_ayat_list_view.dart';
+import 'package:quraanapp/features/quraan/presentation/home/widgets/custom_app_bar.dart';
 
 class SurahDetailsScreenBody extends StatelessWidget {
   const SurahDetailsScreenBody({super.key});
@@ -21,6 +23,10 @@ class SurahDetailsScreenBody extends StatelessWidget {
             firstIcon: FontAwesomeIcons.arrowLeft,
             title: '  Alfatiha',
           ),
+          verticalSpace(28),
+          CustomAyatCard(),
+          verticalSpace(28),
+          Expanded(child: CustomAyatListView()),
         ],
       ),
     );

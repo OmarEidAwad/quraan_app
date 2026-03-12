@@ -4,11 +4,11 @@ import 'package:quraanapp/core/helpers/spacing.dart';
 import 'package:quraanapp/core/theiming/colors.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
 import 'package:quraanapp/core/widgets/custom_tab_bar.dart';
-import 'package:quraanapp/features/quraan/home/ui/widgets/custom_app_bar.dart';
-import 'package:quraanapp/features/quraan/home/ui/widgets/custom_home_card.dart';
-import 'package:quraanapp/features/quraan/home/ui/widgets/juz_section/juz_list_page.dart';
-import 'package:quraanapp/features/quraan/home/ui/widgets/page_section/page_list_page.dart';
-import 'package:quraanapp/features/quraan/home/ui/widgets/surah_section/surah_list_page.dart';
+import 'package:quraanapp/features/quraan/presentation/home/widgets/custom_app_bar.dart';
+import 'package:quraanapp/features/quraan/presentation/home/widgets/custom_home_card.dart';
+import 'package:quraanapp/features/quraan/presentation/home/widgets/juz_section/juz_list_page.dart';
+import 'package:quraanapp/features/quraan/presentation/home/widgets/page_section/page_list_page.dart';
+import 'package:quraanapp/features/quraan/presentation/home/widgets/surah_section/surah_list_page.dart';
 
 class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({super.key});
@@ -28,17 +28,19 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomAppBar(title: '  Quran App',firstIcon:           FontAwesomeIcons.barsStaggered,
-),
+          CustomAppBar(
+            title: '  Quran App',
+            firstIcon: FontAwesomeIcons.barsStaggered,
+          ),
           verticalSpace(16),
           Text(
             "Asslamualaikum",
             textAlign: TextAlign.start,
             style: TextStyles.font18GreyMedium,
           ),
-          verticalSpace(20),
-          CustomHomeCard(),
           verticalSpace(22),
+          CustomHomeCard(),
+          verticalSpace(32),
           CustomTabBar(
             currentIndex: _currentIndex,
             label1: "Surah",

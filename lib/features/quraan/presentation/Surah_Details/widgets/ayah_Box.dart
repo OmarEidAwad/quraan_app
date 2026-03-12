@@ -56,15 +56,19 @@ class AyahBox extends StatelessWidget {
             ),
           ),
         ),
-        verticalSpace(14),
-        Container(
-          constraints: BoxConstraints(minHeight: 100.h),
-          child: Text(
-            "   ﻿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-            textAlign: TextAlign.right,
-            style: TextStyles.font20BlackBold.copyWith(
-              fontWeight: FontWeightHelper.medium,
-              fontSize: 24.sp,
+        verticalSpace(16),
+        GestureDetector(onDoubleTap: () {
+          
+        },
+          child: Container(
+            constraints: BoxConstraints(minHeight: 100.h),
+            child: Text(
+              "   ﻿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+              textAlign: TextAlign.right,
+              style: TextStyles.font20BlackBold.copyWith(
+                fontWeight: FontWeightHelper.medium,
+                fontSize: 24.sp,
+              ),
             ),
           ),
         ),

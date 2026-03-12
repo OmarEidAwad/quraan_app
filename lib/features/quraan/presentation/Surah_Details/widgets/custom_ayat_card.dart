@@ -11,7 +11,7 @@ class CustomAyatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 240.h,
+      height: 230.h,
       width: double.infinity,
       decoration: BoxDecoration(
         boxShadow: [

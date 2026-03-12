@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quraanapp/core/helpers/spacing.dart';
 import 'package:quraanapp/core/routing/app_router.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
-import 'package:quraanapp/features/quraan/home/ui/widgets/surah_section/number_icon.dart';
+import 'package:quraanapp/features/quraan/presentation/home/widgets/surah_section/number_icon.dart';
 
 class CustomSurahCard extends StatelessWidget {
   const CustomSurahCard({super.key});

@@ -1,0 +1,81 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quraanapp/core/helpers/spacing.dart';
+import 'package:quraanapp/core/routing/app_router.dart';
+import 'package:quraanapp/core/theiming/colors.dart';
+import 'package:quraanapp/core/theiming/font_weight_helper.dart';
+import 'package:quraanapp/core/theiming/styles.dart';
+
+class AyahBox extends StatelessWidget {
+  const AyahBox({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Container(
+          height: 45.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12.r),
+            color: ColorsManager.gray.withOpacity(.1),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 12.r,
+                  backgroundColor: ColorsManager.logoColor,
+                  child: Text("1", style: TextStyles.font16Whitemedium),
+                ),
+                Spacer(),
+                Icon(
+                  Icons.share_outlined,
+                  color: ColorsManager.logoColor,
+                  size: 25.sp,
+                ),
+                horizontalSpace(12),
+                IconButton(
+                  padding: EdgeInsets.zero,
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.play_arrow_outlined,
+                    color: ColorsManager.logoColor,
+                    size: 32.sp,
+                  ),
+                ),
+                horizontalSpace(12),
+                Icon(
+                  Icons.bookmark_outline_outlined,
+                  color: ColorsManager.logoColor,
+                  size: 26.sp,
+                ),
+              ],
+            ),
+          ),
+        ),
+        verticalSpace(16),
+        GestureDetector(onDoubleTap: () {
+            context.push(AppRoute.mushafScreen);
+        },
+          child: Container(
+            constraints: BoxConstraints(minHeight: 100.h),
+            child: Text(
+              "   ﻿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+              textAlign: TextAlign.right,
+              style: TextStyles.font20BlackBold.copyWith(
+                fontWeight: FontWeightHelper.medium,
+                fontSize: 24.sp,
+              ),
+            ),
+          ),
+        ),
+        verticalSpace(12),
+      ],
+    );
+  }
+}

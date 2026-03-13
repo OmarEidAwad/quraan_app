@@ -1,6 +1,6 @@
 class ApiConstants {
   static const String apiBaseUrl =
-      'http://api.alquran.cloud/v1/quran/ar.alafasy';
+      'http://api.alquran.cloud/v1/';
 
 }
 

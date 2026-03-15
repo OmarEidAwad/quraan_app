@@ -6,7 +6,6 @@ class QuranAssetDataSource {
 
   Future<QuranResponse> loadQuran() async {
 
-    // قراءة ملف القرآن من assets
     final jsonString =
         await rootBundle.loadString('assets/quran/quran.json');
 
@@ -14,4 +13,9 @@ class QuranAssetDataSource {
 
     return QuranResponse.fromJson(jsonMap);
   }
+
+  
+
+
+
 }

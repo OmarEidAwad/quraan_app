@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quraanapp/core/helpers/spacing.dart';
-import 'package:quraanapp/features/quraan/get_surah/widgets/custom_ayat_card.dart';
+import 'package:quraanapp/features/quraan/get_surah/widgets/custom_ayat_purple_card.dart';
 import 'package:quraanapp/features/quraan/get_surah/widgets/custom_ayat_list_view.dart';
 import 'package:quraanapp/features/quraan/home/presentation/widgets/custom_app_bar.dart';
 import 'package:quraanapp/features/quraan/home/presentation/widgets/surah_section/custom_surah_card.dart';
@@ -25,7 +25,7 @@ class SurahDetailsScreenBody extends StatelessWidget {
             title: "${args.enName}",
           ),
           verticalSpace(28),
-          CustomAyatPurpleCard(country: args.country, enName: args.enName, verses: args.verses),
+          CustomAyatPurpleCard(country: args.country,  enName: args.enName, verses: args.verses),
           verticalSpace(32),
           Expanded(child: CustomAyatListView()),
         ],

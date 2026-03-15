@@ -9,7 +9,7 @@ class CustomAyatListView extends StatelessWidget {
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (BuildContext context, int index) {
-        return AyahBox() ;
+        return AyahBox(SurahNumber:1.toString() ,) ;
       },
     );
   }

@@ -8,8 +8,8 @@ import 'package:quraanapp/core/theiming/font_weight_helper.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
 
 class AyahBox extends StatelessWidget {
-  const AyahBox({super.key});
-
+  const AyahBox({super.key, required this.SurahNumber});
+  final String SurahNumber;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,7 +30,7 @@ class AyahBox extends StatelessWidget {
                 CircleAvatar(
                   radius: 12.r,
                   backgroundColor: ColorsManager.logoColor,
-                  child: Text("1", style: TextStyles.font16Whitemedium),
+                  child: Text(SurahNumber, style: TextStyles.font16Whitemedium),
                 ),
                 Spacer(),
                 Icon(
@@ -59,9 +59,10 @@ class AyahBox extends StatelessWidget {
           ),
         ),
         verticalSpace(16),
-        GestureDetector(onDoubleTap: () {
+        GestureDetector(
+          onDoubleTap: () {
             context.push(AppRoute.mushafScreen);
-        },
+          },
           child: Container(
             constraints: BoxConstraints(minHeight: 100.h),
             child: Text(

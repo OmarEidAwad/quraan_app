@@ -2,9 +2,6 @@
 
 part of 'quran_model.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
 
 _$QuranResponseImpl _$$QuranResponseImplFromJson(Map<String, dynamic> json) =>
     _$QuranResponseImpl(

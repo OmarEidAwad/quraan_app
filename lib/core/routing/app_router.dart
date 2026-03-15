@@ -1,7 +1,11 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quraanapp/core/di/dependency_injection.dart';
 import 'package:quraanapp/features/quraan/get_surah/mushaf_screen.dart';
 
 import 'package:quraanapp/features/quraan/get_surah/surah_details_screen.dart';
+import 'package:quraanapp/features/quraan/home/data/quran_repositotry.dart';
+import 'package:quraanapp/features/quraan/home/logic/cubit/quraan_cubit.dart';
 import 'package:quraanapp/features/quraan/home/presentation/widgets/home_screen.dart';
 
 abstract class AppRoute {
@@ -17,12 +21,15 @@ abstract class AppRoute {
       ),
       GoRoute(
         path: surahDetailsScreen,
-        builder: (context, state) => const SurahDetailsScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => QuranCubit(getIt<QuranRepository>())..getQuran(),
+          child: SurahDetailsScreen(),
+        ),
       ),
-      // GoRoute(
-      //   path: mushafScreen,
-      //   builder: (context, state) => const MushafScreen(),
-      // ),
+      GoRoute(
+        path: mushafScreen,
+        builder: (context, state) => const MushafScreen(),
+      ),
     ],
   );
 }

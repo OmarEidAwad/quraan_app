@@ -24,10 +24,16 @@ class SurahDetailsScreenBody extends StatelessWidget {
             firstIcon: FontAwesomeIcons.arrowLeft,
             title: "${args.enName}",
           ),
-          verticalSpace(28),
-          CustomAyatPurpleCard(country: args.country,  enName: args.enName, verses: args.verses),
+          verticalSpace(25),
+          CustomAyatPurpleCard(
+            country: args.country,
+            enName: args.enName,
+            verses: args.verses,
+          ),
           verticalSpace(32),
-          Expanded(child: CustomAyatListView()),
+          Expanded(
+            child: CustomAyatListView(surahNumber: args.number.toString()),
+          ),
         ],
       ),
     );

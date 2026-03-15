@@ -31,7 +31,6 @@ dependencies:
   switch_button: ^0.0.1
 
 dev_dependencies:
-  hive_generator: ^2.0.1
 
   build_runner: ^2.4.8
   flutter_launcher_icons: ^0.13.1
@@ -40,6 +39,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.4.7
+  hive_generator: ^2.0.1
   json_serializable: ^6.6.2
 
 flutter:
@@ -50,11 +50,19 @@ flutter:
     - assets/images/images_svg/
     - assets/quran/quran.json
 
-
   fonts:
-    - family: poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
+  - family: Poppins
+    fonts:
+      - asset: assets/fonts/Poppins-Regular.ttf
+
+  - family: Uthmanic
+    fonts:
+      - asset: assets/fonts/Uthmanic-Regular.ttf
+
+  - family: Amiri
+    fonts:
+      - asset: assets/fonts/AmiriQuran-Regular.ttf
+
 
 # --------------------------
 # Splash screen configuration

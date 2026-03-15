@@ -6,10 +6,19 @@ import 'package:quraanapp/core/routing/app_router.dart';
 import 'package:quraanapp/core/theiming/colors.dart';
 import 'package:quraanapp/core/theiming/font_weight_helper.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
+import 'package:quraanapp/features/quraan/get_surah/widgets/quraan_text.dart';
 
 class AyahBox extends StatelessWidget {
-  const AyahBox({super.key, required this.SurahNumber});
+  const AyahBox({
+    super.key,
+    required this.SurahNumber,
+    required this.ayaText,
+    required this.AyahNumber,
+  });
   final String SurahNumber;
+  final String ayaText;
+  final String AyahNumber;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,7 +39,12 @@ class AyahBox extends StatelessWidget {
                 CircleAvatar(
                   radius: 12.r,
                   backgroundColor: ColorsManager.logoColor,
-                  child: Text(SurahNumber, style: TextStyles.font16Whitemedium),
+                  child: Center(
+                    child: Text(
+                      AyahNumber,
+                      style: TextStyles.font16Whitemedium,
+                    ),
+                  ),
                 ),
                 Spacer(),
                 Icon(
@@ -58,24 +72,19 @@ class AyahBox extends StatelessWidget {
             ),
           ),
         ),
-        verticalSpace(16),
+        verticalSpace(18),
         GestureDetector(
           onDoubleTap: () {
             context.push(AppRoute.mushafScreen);
           },
           child: Container(
-            constraints: BoxConstraints(minHeight: 100.h),
-            child: Text(
-              "   ﻿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-              textAlign: TextAlign.right,
-              style: TextStyles.font20BlackBold.copyWith(
-                fontWeight: FontWeightHelper.medium,
-                fontSize: 24.sp,
-              ),
-            ),
+            constraints: BoxConstraints(minHeight: 16.h),
+            child: SurahNumber == "1"
+                ? QuraanText(ayaText: ayaText)
+                : QuraanText(ayaText: ayaText),
           ),
         ),
-        verticalSpace(12),
+        verticalSpace(20),
       ],
     );
   }

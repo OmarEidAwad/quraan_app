@@ -27,7 +27,13 @@ class _SurahListPageState extends State<SurahListPage> {
             return ListView.builder(
               itemCount: 114,
               itemBuilder: (BuildContext context, int index) {
-                return CustomSurahCard(arName:data.data.surahs.references[index].name  ,country:  data.data.surahs.references[index].revelationType,enName: data.data.surahs.references[index].englishName,verses: data.data.surahs.references[index].numberOfAyahs.toString(),number: data.data.surahs.references[index].number.toString(),
+                return CustomSurahCard(
+                  arName: data.data.surahs[index].name,
+                  country: data.data.surahs[index].revelationType,
+                  enName: data.data.surahs[index].englishName,
+                  verses: data.data.surahs[index].ayahs.length.toString()
+                      .toString(),
+                  number: data.data.surahs[index].number.toString(),
                 );
               },
             );

@@ -1,0 +1,57 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'quran_model.freezed.dart';
+part 'quran_model.g.dart';
+
+@freezed
+class QuranResponse with _$QuranResponse {
+  const factory QuranResponse({
+    required int code,
+    required String status,
+    required QuranData data,
+  }) = _QuranResponse;
+
+  factory QuranResponse.fromJson(Map<String, dynamic> json) =>
+      _$QuranResponseFromJson(json);
+}
+
+@freezed
+class QuranData with _$QuranData {
+  const factory QuranData({required List<Surah> surahs}) = _QuranData;
+
+  factory QuranData.fromJson(Map<String, dynamic> json) =>
+      _$QuranDataFromJson(json);
+}
+
+@freezed
+class Surah with _$Surah {
+  const factory Surah({
+    required int number,
+    required String name,
+    required String englishName,
+    required String englishNameTranslation,
+    required String revelationType,
+    required List<Ayah> ayahs,
+  }) = _Surah;
+
+  factory Surah.fromJson(Map<String, dynamic> json) => _$SurahFromJson(json);
+}
+
+@freezed
+class Ayah with _$Ayah {
+  const factory Ayah({
+    required int number,
+    required String audio,
+    required List<String> audioSecondary,
+    required String text,
+    required int numberInSurah,
+    required int juz,
+    required int manzil,
+    required int page,
+    required int ruku,
+    required int hizbQuarter,
+    required dynamic sajda,
+  }) = _Ayah;
+
+  factory Ayah.fromJson(Map<String, dynamic> json) => _$AyahFromJson(json);
+}

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:quraanapp/features/quraan/home/data/model/quraan_response_model.dart';
+import 'package:quraanapp/features/quraan/home/data/model/quran_model.dart';
 
 class QuranAssetDataSource {
 

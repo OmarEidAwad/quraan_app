@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quraanapp/core/theiming/colors.dart';
-import 'package:quraanapp/core/theiming/font_weight_helper.dart';
 import 'package:quraanapp/features/quraan/home/presentation/widgets/home_screen_body.dart';
 
 class HomeScreen extends StatelessWidget {

@@ -7,13 +7,28 @@ import 'package:quraanapp/core/theiming/styles.dart';
 import 'package:quraanapp/features/quraan/home/presentation/widgets/surah_section/number_icon.dart';
 
 class CustomSurahCard extends StatelessWidget {
-  const CustomSurahCard({super.key});
+  const CustomSurahCard({
+    super.key,
+    required this.enName,
+    required this.arName,
+    required this.country,
+    required this.verses,
+    required this.number,
+  });
+  final String enName;
+  final String arName;
+  final String country;
+  final String verses;
+  final String number;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoute.surahDetailsScreen);
+        context.push(
+          AppRoute.surahDetailsScreen,
+          extra: Args(enName, country, verses, number)
+        );
       },
       child: Column(
         children: [
@@ -24,7 +39,7 @@ class CustomSurahCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                NumberIcon(),
+                NumberIcon(number: number),
                 horizontalSpace(20),
 
                 Expanded(
@@ -33,7 +48,7 @@ class CustomSurahCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Surah Name',
+                        enName,
                         textAlign: TextAlign.start,
                         style: TextStyles.font16MorePurpleBold,
                         maxLines: 1,
@@ -42,16 +57,22 @@ class CustomSurahCard extends StatelessWidget {
                       SizedBox(height: 4.h),
                       Row(
                         children: [
-                          Text("Country", style: TextStyles.font12GreyRegular),
-                          horizontalSpace(12),
-                          Text("7 verses", style: TextStyles.font12GreyRegular),
+                          Text(country, style: TextStyles.font12GreyRegular),
+                          horizontalSpace(8),
+                          Expanded(
+                            child: Text(
+                              "$verses Verses",
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyles.font12GreyRegular,
+                            ),
+                          ),
                         ],
                       ),
                     ],
                   ),
                 ),
 
-                Text("الفاتحه", style: TextStyles.font20PurpleBold),
+                Text(arName, style: TextStyles.font20PurpleBold),
               ],
             ),
           ),
@@ -65,4 +86,12 @@ class CustomSurahCard extends StatelessWidget {
       ),
     );
   }
+}
+
+class Args {
+  final String enName;
+  final String country;
+  final String verses;
+  final String number;
+  Args(this.enName, this.country, this.verses, this.number);
 }

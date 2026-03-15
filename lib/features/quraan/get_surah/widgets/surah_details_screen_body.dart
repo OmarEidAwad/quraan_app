@@ -4,10 +4,11 @@ import 'package:quraanapp/core/helpers/spacing.dart';
 import 'package:quraanapp/features/quraan/get_surah/widgets/custom_ayat_card.dart';
 import 'package:quraanapp/features/quraan/get_surah/widgets/custom_ayat_list_view.dart';
 import 'package:quraanapp/features/quraan/home/presentation/widgets/custom_app_bar.dart';
+import 'package:quraanapp/features/quraan/home/presentation/widgets/surah_section/custom_surah_card.dart';
 
 class SurahDetailsScreenBody extends StatelessWidget {
-  const SurahDetailsScreenBody({super.key});
-
+  const SurahDetailsScreenBody({super.key, required this.args});
+  final Args args;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,10 +22,10 @@ class SurahDetailsScreenBody extends StatelessWidget {
               Navigator.pop(context);
             },
             firstIcon: FontAwesomeIcons.arrowLeft,
-            title: '  Alfatiha',
+            title: "${args.enName}",
           ),
           verticalSpace(28),
-          CustomAyatCard(),
+          CustomAyatPurpleCard(country: args.country, enName: args.enName, verses: args.verses),
           verticalSpace(32),
           Expanded(child: CustomAyatListView()),
         ],

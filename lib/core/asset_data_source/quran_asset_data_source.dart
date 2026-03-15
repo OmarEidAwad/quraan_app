@@ -1,0 +1,17 @@
+import 'dart:convert';
+import 'package:flutter/services.dart';
+import 'package:quraanapp/features/quraan/home/data/model/quraan_response_model.dart';
+
+class QuranAssetDataSource {
+
+  Future<QuranResponse> loadQuran() async {
+
+    // قراءة ملف القرآن من assets
+    final jsonString =
+        await rootBundle.loadString('assets/quran/quran.json');
+
+    final Map<String, dynamic> jsonMap = jsonDecode(jsonString);
+
+    return QuranResponse.fromJson(jsonMap);
+  }
+}

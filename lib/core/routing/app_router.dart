@@ -19,10 +19,10 @@ abstract class AppRoute {
         path: surahDetailsScreen,
         builder: (context, state) => const SurahDetailsScreen(),
       ),
-      GoRoute(
-        path: mushafScreen,
-        builder: (context, state) => const MushafScreen(),
-      ),
+      // GoRoute(
+      //   path: mushafScreen,
+      //   builder: (context, state) => const MushafScreen(),
+      // ),
     ],
   );
 }

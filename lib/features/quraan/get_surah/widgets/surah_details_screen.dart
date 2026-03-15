@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quraanapp/features/quraan/get_surah/widgets/surah_details_screen_body.dart';
+import 'package:quraanapp/features/quraan/home/presentation/widgets/surah_section/custom_surah_card.dart';
 
 class SurahDetailsScreen extends StatelessWidget {
   const SurahDetailsScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +12,9 @@ class SurahDetailsScreen extends StatelessWidget {
         preferredSize: const Size.fromHeight(0),
         child: AppBar(elevation: 0, backgroundColor: Colors.transparent),
       ),
-      body: SurahDetailsScreenBody(),
+      body: SurahDetailsScreenBody(
+        args: GoRouterState.of(context).extra as Args,
+      ),
     );
   }
 }

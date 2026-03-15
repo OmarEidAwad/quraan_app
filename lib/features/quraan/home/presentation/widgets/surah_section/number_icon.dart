@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
 
 class NumberIcon extends StatelessWidget {
-  const NumberIcon({super.key});
-
+  const NumberIcon({super.key, required this.number});
+ final String number;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -17,7 +17,7 @@ class NumberIcon extends StatelessWidget {
           fit: BoxFit.cover,
         ),
 
-        Text('1', style: TextStyles.font14BlackMedium),
+        Text(number, style: TextStyles.font14BlackMedium),
       ],
     );
   }

@@ -5,9 +5,11 @@ import 'package:quraanapp/core/helpers/spacing.dart';
 import 'package:quraanapp/core/theiming/colors.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
 
-class CustomAyatCard extends StatelessWidget {
-  const CustomAyatCard({super.key});
-
+class CustomAyatPurpleCard extends StatelessWidget {
+  const CustomAyatPurpleCard({super.key, required this.enName, required this.verses, required this.country});
+  final String enName ;
+  final String verses;
+  final String country;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +36,7 @@ class CustomAyatCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Alfatiha', style: TextStyles.font26WhiteExtraBold),
+            Text(enName, style: TextStyles.font26WhiteExtraBold),
             verticalSpace(16),
             Divider(
               color: Colors.white.withOpacity(0.4),
@@ -46,9 +48,9 @@ class CustomAyatCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Country", style: TextStyles.font16Whitemedium),
+                Text(country, style: TextStyles.font16Whitemedium),
                 horizontalSpace(12),
-                Text("7 verses", style: TextStyles.font16Whitemedium),
+                Text("${verses} verses", style: TextStyles.font16Whitemedium),
               ],
             ),
             verticalSpace(32),

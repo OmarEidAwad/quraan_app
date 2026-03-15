@@ -6,75 +6,71 @@ part of 'quraan_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_QuranResponse _$QuranResponseFromJson(Map<String, dynamic> json) =>
-    _QuranResponse(
+_$QuranResponseImpl _$$QuranResponseImplFromJson(Map<String, dynamic> json) =>
+    _$QuranResponseImpl(
       code: (json['code'] as num).toInt(),
       status: json['status'] as String,
       data: QuranData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$QuranResponseToJson(_QuranResponse instance) =>
+Map<String, dynamic> _$$QuranResponseImplToJson(_$QuranResponseImpl instance) =>
     <String, dynamic>{
       'code': instance.code,
       'status': instance.status,
       'data': instance.data,
     };
 
-_QuranData _$QuranDataFromJson(Map<String, dynamic> json) => _QuranData(
-  surahs: (json['surahs'] as List<dynamic>)
-      .map((e) => Surah.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+_$QuranDataImpl _$$QuranDataImplFromJson(Map<String, dynamic> json) =>
+    _$QuranDataImpl(
+      ayahs: Ayahs.fromJson(json['ayahs'] as Map<String, dynamic>),
+      surahs: Surahs.fromJson(json['surahs'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$QuranDataToJson(_QuranData instance) =>
-    <String, dynamic>{'surahs': instance.surahs};
+Map<String, dynamic> _$$QuranDataImplToJson(_$QuranDataImpl instance) =>
+    <String, dynamic>{
+      'ayahs': instance.ayahs,
+      'surahs': instance.surahs,
+    };
 
-_Surah _$SurahFromJson(Map<String, dynamic> json) => _Surah(
-  number: (json['number'] as num).toInt(),
-  name: json['name'] as String,
-  englishName: json['englishName'] as String,
-  englishNameTranslation: json['englishNameTranslation'] as String,
-  revelationType: json['revelationType'] as String,
-  ayahs: (json['ayahs'] as List<dynamic>)
-      .map((e) => Ayah.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+_$AyahsImpl _$$AyahsImplFromJson(Map<String, dynamic> json) => _$AyahsImpl(
+      count: (json['count'] as num).toInt(),
+    );
 
-Map<String, dynamic> _$SurahToJson(_Surah instance) => <String, dynamic>{
-  'number': instance.number,
-  'name': instance.name,
-  'englishName': instance.englishName,
-  'englishNameTranslation': instance.englishNameTranslation,
-  'revelationType': instance.revelationType,
-  'ayahs': instance.ayahs,
-};
+Map<String, dynamic> _$$AyahsImplToJson(_$AyahsImpl instance) =>
+    <String, dynamic>{
+      'count': instance.count,
+    };
 
-_Ayah _$AyahFromJson(Map<String, dynamic> json) => _Ayah(
-  number: (json['number'] as num).toInt(),
-  audio: json['audio'] as String,
-  audioSecondary: (json['audioSecondary'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  text: json['text'] as String,
-  numberInSurah: (json['numberInSurah'] as num).toInt(),
-  juz: (json['juz'] as num).toInt(),
-  manzil: (json['manzil'] as num).toInt(),
-  page: (json['page'] as num).toInt(),
-  ruku: (json['ruku'] as num).toInt(),
-  hizbQuarter: (json['hizbQuarter'] as num).toInt(),
-  sajda: json['sajda'],
-);
+_$SurahsImpl _$$SurahsImplFromJson(Map<String, dynamic> json) => _$SurahsImpl(
+      count: (json['count'] as num).toInt(),
+      references: (json['references'] as List<dynamic>)
+          .map((e) => SurahReference.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
-Map<String, dynamic> _$AyahToJson(_Ayah instance) => <String, dynamic>{
-  'number': instance.number,
-  'audio': instance.audio,
-  'audioSecondary': instance.audioSecondary,
-  'text': instance.text,
-  'numberInSurah': instance.numberInSurah,
-  'juz': instance.juz,
-  'manzil': instance.manzil,
-  'page': instance.page,
-  'ruku': instance.ruku,
-  'hizbQuarter': instance.hizbQuarter,
-  'sajda': instance.sajda,
-};
+Map<String, dynamic> _$$SurahsImplToJson(_$SurahsImpl instance) =>
+    <String, dynamic>{
+      'count': instance.count,
+      'references': instance.references,
+    };
+
+_$SurahReferenceImpl _$$SurahReferenceImplFromJson(Map<String, dynamic> json) =>
+    _$SurahReferenceImpl(
+      number: (json['number'] as num).toInt(),
+      name: json['name'] as String,
+      englishName: json['englishName'] as String,
+      englishNameTranslation: json['englishNameTranslation'] as String,
+      numberOfAyahs: (json['numberOfAyahs'] as num).toInt(),
+      revelationType: json['revelationType'] as String,
+    );
+
+Map<String, dynamic> _$$SurahReferenceImplToJson(
+        _$SurahReferenceImpl instance) =>
+    <String, dynamic>{
+      'number': instance.number,
+      'name': instance.name,
+      'englishName': instance.englishName,
+      'englishNameTranslation': instance.englishNameTranslation,
+      'numberOfAyahs': instance.numberOfAyahs,
+      'revelationType': instance.revelationType,
+    };

@@ -7,8 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:quraanapp/main.dart';
 import 'package:quraanapp/quraan_app.dart';
 
 void main() {

@@ -4,7 +4,7 @@ part 'quraan_response_model.freezed.dart';
 part 'quraan_response_model.g.dart';
 
 @freezed
-abstract class QuranResponse with _$QuranResponse {
+class QuranResponse with _$QuranResponse {
   const factory QuranResponse({
     required int code,
     required String status,
@@ -16,42 +16,42 @@ abstract class QuranResponse with _$QuranResponse {
 }
 
 @freezed
-abstract class QuranData with _$QuranData {
-  const factory QuranData({required List<Surah> surahs}) = _QuranData;
+class QuranData with _$QuranData {
+  const factory QuranData({required Ayahs ayahs, required Surahs surahs}) =
+      _QuranData;
 
   factory QuranData.fromJson(Map<String, dynamic> json) =>
       _$QuranDataFromJson(json);
 }
 
 @freezed
-abstract class Surah with _$Surah {
-  const factory Surah({
+class Ayahs with _$Ayahs {
+  const factory Ayahs({required int count}) = _Ayahs;
+
+  factory Ayahs.fromJson(Map<String, dynamic> json) => _$AyahsFromJson(json);
+}
+
+@freezed
+class Surahs with _$Surahs {
+  const factory Surahs({
+    required int count,
+    required List<SurahReference> references,
+  }) = _Surahs;
+
+  factory Surahs.fromJson(Map<String, dynamic> json) => _$SurahsFromJson(json);
+}
+
+@freezed
+class SurahReference with _$SurahReference {
+  const factory SurahReference({
     required int number,
     required String name,
     required String englishName,
     required String englishNameTranslation,
+    required int numberOfAyahs,
     required String revelationType,
-    required List<Ayah> ayahs,
-  }) = _Surah;
+  }) = _SurahReference;
 
-  factory Surah.fromJson(Map<String, dynamic> json) => _$SurahFromJson(json);
-}
-
-@freezed
-abstract class Ayah with _$Ayah {
-  const factory Ayah({
-    required int number,
-    required String audio,
-    required List<String> audioSecondary,
-    required String text,
-    required int numberInSurah,
-    required int juz,
-    required int manzil,
-    required int page,
-    required int ruku,
-    required int hizbQuarter,
-    required Object? sajda,
-  }) = _Ayah;
-
-  factory Ayah.fromJson(Map<String, dynamic> json) => _$AyahFromJson(json);
+  factory SurahReference.fromJson(Map<String, dynamic> json) =>
+      _$SurahReferenceFromJson(json);
 }

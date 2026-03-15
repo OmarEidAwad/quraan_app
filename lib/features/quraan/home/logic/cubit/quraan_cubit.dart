@@ -7,18 +7,17 @@ class QuranCubit extends Cubit<QuranState> {
 
   final QuranRepository repository;
 
-  QuranCubit(this.repository)
-      : super(const QuranState.initial());
+  QuranCubit(this.repository) : super(const QuranState.initial());
 
   Future<void> getQuran() async {
 
     try {
-
+      
       emit(const QuranState.loading());
 
-      final response = await repository.getQuran();
+      final result = await repository.getQuran();
 
-      emit(QuranState.success(response));
+      emit(QuranState.success(result));
 
     } catch (e) {
 
@@ -27,5 +26,4 @@ class QuranCubit extends Cubit<QuranState> {
     }
 
   }
-
 }

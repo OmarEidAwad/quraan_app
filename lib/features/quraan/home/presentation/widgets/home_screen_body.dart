@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:quraanapp/core/di/dependency_injection.dart';
 import 'package:quraanapp/core/helpers/spacing.dart';
-import 'package:quraanapp/core/theiming/colors.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
 import 'package:quraanapp/core/widgets/custom_tab_bar.dart';
+import 'package:quraanapp/features/quraan/home/data/quran_repositotry.dart';
+import 'package:quraanapp/features/quraan/home/logic/cubit/quraan_cubit.dart';
 import 'package:quraanapp/features/quraan/home/presentation/widgets/custom_app_bar.dart';
 import 'package:quraanapp/features/quraan/home/presentation/widgets/custom_home_card.dart';
 import 'package:quraanapp/features/quraan/home/presentation/widgets/juz_section/juz_list_page.dart';
@@ -54,10 +57,13 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
           ),
           verticalSpace(20),
 
-          Expanded(
-            child: IndexedStack(
-              index: _currentIndex,
-              children: [SurahListPage(), JuzListPage(), PageListPage()],
+          BlocProvider(
+            create: (context) => QuranCubit(getIt<QuranRepository>())..getQuran(),
+            child: Expanded(
+              child: IndexedStack(
+                index: _currentIndex,
+                children: [SurahListPage(), JuzListPage(), PageListPage()],
+              ),
             ),
           ),
         ],

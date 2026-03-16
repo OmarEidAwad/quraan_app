@@ -27,29 +27,35 @@ class CustomHomeCard extends StatelessWidget {
           fit: BoxFit.fill,
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 22.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                SvgPicture.asset(
-                  "assets/images/images_svg/small_mushaf_icon.svg",
+      child: Expanded(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 22.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/images/images_svg/small_mushaf_icon.svg",
+                    ),
+                    SizedBox(width: 8.w),
+                    Text("Last Read", style: TextStyles.font14WhiteMedium),
+                  ],
                 ),
-                SizedBox(width: 8.w),
-                Text("Last Read", style: TextStyles.font14WhiteMedium),
-              ],
-            ),
-            Text(" Al-Fatiha", style: TextStyles.font22WhiteExtraBold),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Ayah No: 1", style: TextStyles.font14WhiteRegular),
-              ],
-            ),
-          ],
+              ),
+              Text(" Al-Fatiha", style: TextStyles.font22WhiteExtraBold),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Ayah No: 1", style: TextStyles.font14WhiteRegular),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

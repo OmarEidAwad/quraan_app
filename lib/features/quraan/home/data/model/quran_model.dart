@@ -1,10 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'quraan_response_model.freezed.dart';
-part 'quraan_response_model.g.dart';
+part 'quran_model.freezed.dart';
+part 'quran_model.g.dart';
 
 @freezed
-abstract class QuranResponse with _$QuranResponse {
+class QuranResponse with _$QuranResponse {
   const factory QuranResponse({
     required int code,
     required String status,
@@ -16,7 +16,7 @@ abstract class QuranResponse with _$QuranResponse {
 }
 
 @freezed
-abstract class QuranData with _$QuranData {
+class QuranData with _$QuranData {
   const factory QuranData({required List<Surah> surahs}) = _QuranData;
 
   factory QuranData.fromJson(Map<String, dynamic> json) =>
@@ -24,7 +24,7 @@ abstract class QuranData with _$QuranData {
 }
 
 @freezed
-abstract class Surah with _$Surah {
+class Surah with _$Surah {
   const factory Surah({
     required int number,
     required String name,
@@ -38,7 +38,7 @@ abstract class Surah with _$Surah {
 }
 
 @freezed
-abstract class Ayah with _$Ayah {
+class Ayah with _$Ayah {
   const factory Ayah({
     required int number,
     required String audio,
@@ -50,7 +50,7 @@ abstract class Ayah with _$Ayah {
     required int page,
     required int ruku,
     required int hizbQuarter,
-    required Object? sajda,
+    required dynamic sajda,
   }) = _Ayah;
 
   factory Ayah.fromJson(Map<String, dynamic> json) => _$AyahFromJson(json);

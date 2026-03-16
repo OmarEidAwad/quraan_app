@@ -6,9 +6,18 @@ import 'package:quraanapp/core/routing/app_router.dart';
 import 'package:quraanapp/core/theiming/colors.dart';
 import 'package:quraanapp/core/theiming/font_weight_helper.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
+import 'package:quraanapp/features/quraan/get_surah/widgets/quraan_single_ayah_text.dart';
 
 class AyahBox extends StatelessWidget {
-  const AyahBox({super.key});
+  const AyahBox({
+    super.key,
+    required this.SurahNumber,
+    required this.ayaText,
+    required this.AyahNumber,
+  });
+  final String SurahNumber;
+  final String ayaText;
+  final String AyahNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,12 @@ class AyahBox extends StatelessWidget {
                 CircleAvatar(
                   radius: 12.r,
                   backgroundColor: ColorsManager.logoColor,
-                  child: Text("1", style: TextStyles.font16Whitemedium),
+                  child: Center(
+                    child: Text(
+                      AyahNumber,
+                      style: TextStyles.font16Whitemedium,
+                    ),
+                  ),
                 ),
                 Spacer(),
                 Icon(
@@ -58,23 +72,28 @@ class AyahBox extends StatelessWidget {
             ),
           ),
         ),
-        verticalSpace(16),
-        GestureDetector(onDoubleTap: () {
-            context.push(AppRoute.mushafScreen);
-        },
+        verticalSpace(18),
+        GestureDetector(
+          onDoubleTap: () {
+            context.push(AppRoute.mushafScreen, extra: SurahNumber);
+          },
           child: Container(
-            constraints: BoxConstraints(minHeight: 100.h),
-            child: Text(
-              "   ﻿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-              textAlign: TextAlign.right,
-              style: TextStyles.font20BlackBold.copyWith(
-                fontWeight: FontWeightHelper.medium,
-                fontSize: 24.sp,
-              ),
-            ),
+            constraints: BoxConstraints(minHeight: 16.h),
+            child: SurahNumber == "1" || SurahNumber == "27"
+                ? Text(
+                    ayaText,
+
+                    textAlign: TextAlign.right,
+                    textDirection: TextDirection.rtl,
+                    style: TextStyles.font20BlackRegular.copyWith(
+                      height: 2,
+                      fontFamily: 'Amiri',
+                    ),
+                  )
+                : QuraanSingleAyahText(ayaText: ayaText),
           ),
         ),
-        verticalSpace(12),
+        verticalSpace(20),
       ],
     );
   }

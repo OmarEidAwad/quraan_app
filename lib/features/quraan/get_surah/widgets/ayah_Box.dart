@@ -6,7 +6,7 @@ import 'package:quraanapp/core/routing/app_router.dart';
 import 'package:quraanapp/core/theiming/colors.dart';
 import 'package:quraanapp/core/theiming/font_weight_helper.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
-import 'package:quraanapp/features/quraan/get_surah/widgets/quraan_text.dart';
+import 'package:quraanapp/features/quraan/get_surah/widgets/quraan_single_ayah_text.dart';
 
 class AyahBox extends StatelessWidget {
   const AyahBox({
@@ -75,13 +75,22 @@ class AyahBox extends StatelessWidget {
         verticalSpace(18),
         GestureDetector(
           onDoubleTap: () {
-            context.push(AppRoute.mushafScreen);
+            context.push(AppRoute.mushafScreen, extra: SurahNumber);
           },
           child: Container(
             constraints: BoxConstraints(minHeight: 16.h),
-            child: SurahNumber == "1"
-                ? QuraanText(ayaText: ayaText)
-                : QuraanText(ayaText: ayaText),
+            child: SurahNumber == "1" || SurahNumber == "27"
+                ? Text(
+                    ayaText,
+
+                    textAlign: TextAlign.right,
+                    textDirection: TextDirection.rtl,
+                    style: TextStyles.font20BlackRegular.copyWith(
+                      height: 2,
+                      fontFamily: 'Amiri',
+                    ),
+                  )
+                : QuraanSingleAyahText(ayaText: ayaText),
           ),
         ),
         verticalSpace(20),

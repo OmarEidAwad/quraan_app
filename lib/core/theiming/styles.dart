@@ -49,6 +49,12 @@ class TextStyles {
     color: Colors.black,
   );
 
+  static TextStyle font20BlackRegular = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: Colors.black,
+  );
+
   static TextStyle font16MorePurpleBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.bold,

@@ -46,30 +46,34 @@ class CustomSurahCard extends StatelessWidget {
                 horizontalSpace(20),
 
                 Expanded(
-                  child: Column(
+                  child: Column(mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        enName,
-                        textAlign: TextAlign.start,
-                        style: TextStyles.font16MorePurpleBold,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      Expanded(
+                        child: Text(
+                          enName,
+                          textAlign: TextAlign.start,
+                          style: TextStyles.font16MorePurpleBold,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                       SizedBox(height: 4.h),
-                      Row(
-                        children: [
-                          Text(country, style: TextStyles.font12GreyRegular),
-                          horizontalSpace(8),
-                          Expanded(
-                            child: Text(
-                              "$verses Verses",
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyles.font12GreyRegular,
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Expanded(child: Text(country, style: TextStyles.font12GreyRegular)),
+                            horizontalSpace(8),
+                            Expanded(
+                              child: Text(
+                                "$verses Verses",
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyles.font12GreyRegular,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),

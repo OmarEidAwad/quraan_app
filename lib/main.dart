@@ -8,3 +8,4 @@ Future<void> main() async {
   await setupGetIt();
   runApp(const QuraanApp());
 }
+ 

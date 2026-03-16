@@ -26,6 +26,7 @@ class SurahDetailsScreenBody extends StatelessWidget {
           ),
           verticalSpace(25),
           CustomAyatPurpleCard(
+            SurahNumber: args.number.toString(),
             country: args.country,
             enName: args.enName,
             verses: args.verses,

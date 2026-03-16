@@ -28,7 +28,10 @@ abstract class AppRoute {
       ),
       GoRoute(
         path: mushafScreen,
-        builder: (context, state) => const MushafScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => QuranCubit(getIt<QuranRepository>())..getQuran(),
+          child: const MushafScreen(),
+        ),
       ),
     ],
   );

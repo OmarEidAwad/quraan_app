@@ -11,7 +11,7 @@ class SurahNameFrame extends StatelessWidget {
       child: Stack(
         children: [
           Opacity(
-            opacity: .7,
+            opacity: .8,
             child: Image.asset(
               "assets/images/images_png/surah_name.png",
               fit: BoxFit.fill,

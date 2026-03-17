@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quraanapp/core/helpers/spacing.dart';
 import 'package:quraanapp/features/quraan/get_mushaf/widgets/ayat_mushaf_number_icon.dart';
 import 'package:quraanapp/features/quraan/get_mushaf/widgets/surah_name_frame.dart';
 import 'package:quraanapp/features/quraan/home/data/model/quran_model.dart';
@@ -12,7 +13,12 @@ TextSpan buildSurahTextRich(List<Ayah> ayahs, List<Surah> allSurahs) {
     if (ayah.numberInSurah == 1) {
       children.add(
         WidgetSpan(
-          child: Column(children: [SurahNameFrame(surahName: surah.name)]),
+          child: Column(
+            children: [
+              verticalSpace(3),
+              SurahNameFrame(surahName: surah.name),
+            ],
+          ),
         ),
       );
     }

@@ -5,8 +5,8 @@ class ColorsManager {
   static const Color mainPurple = Color(0xFF863ED5);
   static const Color morePurple = Color(0xFF240F4F);
   static const Color white = Color(0xFFFFFFFF);
+  static const Color milkColor = Color.fromARGB(255, 249, 249, 247);
 
   static const Color gray = Color(0xFF8789A3);
-
-  
+  static const Color mushafColor = Color.fromARGB(255, 249, 249, 247);
 }

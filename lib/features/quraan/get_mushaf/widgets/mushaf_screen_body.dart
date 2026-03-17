@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:quraanapp/features/quraan/get_mushaf/custom_mushaf_app_bar.dart';
 import 'package:quraanapp/features/quraan/get_mushaf/widgets/build_surah_text_rich.dart';
 
 import 'package:quraanapp/features/quraan/home/logic/cubit/quraan_cubit.dart';
@@ -44,30 +45,22 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
                   .page;
               pageController = PageController(initialPage: pageNumber - 1);
             }
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Column(
-                children: [
-                  CustomAppBar(
-                    ontap: () {
-                      Navigator.pop(context);
-                    },
-                    firstIcon: FontAwesomeIcons.arrowLeft,
-                    title: currentPage == 0
-                        ? data
-                              .data
-                              .surahs[int.parse(widget.SurahNumber) - 1]
-                              .name
-                        : data.data.surahs
-                              .firstWhere(
-                                (s) => s.ayahs.any(
-                                  (a) => a.page == currentPage + 1,
-                                ),
-                              )
-                              .name,
-                    Titlecolor: const Color.fromARGB(255, 112, 111, 111),
-                  ),
-                  Expanded(
+            return Column(
+              children: [CustomMushafAppBar(
+                 
+                  
+                  title: currentPage == 0
+                      ? data.data.surahs[int.parse(widget.SurahNumber) - 1].name
+                      : data.data.surahs
+                            .firstWhere(
+                              (s) =>
+                                  s.ayahs.any((a) => a.page == currentPage + 1),
+                            )
+                            .name,),
+               
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: PageView.builder(
                       scrollDirection: Axis.horizontal,
                       reverse: true,
@@ -98,8 +91,8 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
                       },
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             );
           },
           error: (message) {

@@ -23,7 +23,7 @@ class AyatMushafNumberIcon extends StatelessWidget {
         Text(
           number,
           style: TextStyles.font14BlackMedium.copyWith(
-            color: const Color.fromARGB(255, 51, 51, 51).withOpacity(.8),
+            color: Colors.black.withOpacity(.7),
           ),
         ),
       ],

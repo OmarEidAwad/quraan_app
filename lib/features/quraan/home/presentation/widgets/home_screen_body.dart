@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quraanapp/core/di/dependency_injection.dart';
+import 'package:quraanapp/core/helpers/shared_pref_helper.dart';
 import 'package:quraanapp/core/helpers/spacing.dart';
+import 'package:quraanapp/core/routing/app_router.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
 import 'package:quraanapp/core/widgets/custom_tab_bar.dart';
 import 'package:quraanapp/features/quraan/home/data/quran_repositotry.dart';
@@ -23,50 +26,63 @@ class HomeScreenBody extends StatefulWidget {
 class _HomeScreenBodyState extends State<HomeScreenBody> {
   final PageController controller = PageController(initialPage: 1);
   int _currentIndex = 0;
+  String? lastSurah;
+
+  @override
+  void initState() {
+    super.initState();
+    loadLastSurah();
+  }
+
+  void loadLastSurah() async {
+    lastSurah = await SharedPrefHelper.getLastSurah();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 22.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomAppBar(
-            title: '  Quran App',
-            firstIcon: FontAwesomeIcons.barsStaggered,
-          ),
-          verticalSpace(16),
-          Text(
-            "Asslamualaikum",
-            textAlign: TextAlign.start,
-            style: TextStyles.font18GreyMedium,
-          ),
-          verticalSpace(22),
-          CustomHomeCard(),
-          verticalSpace(32),
-          CustomTabBar(
-            currentIndex: _currentIndex,
-            label1: "Surah",
-            label2: "Juz",
-            label3: "Page",
-            onTabSelected: (index) {
-              setState(() {
-                _currentIndex = index;
-              });
-            },
-          ),
-          verticalSpace(20),
-
-          BlocProvider(
+    setState(() {});
+    return BlocProvider(
             create: (context) => QuranCubit(getIt<QuranRepository>())..getQuran(),
-            child: Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 22.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomAppBar(
+              title: '  Quran App',
+              firstIcon: FontAwesomeIcons.barsStaggered,
+            ),
+            verticalSpace(16),
+            Text(
+              "Asslamualaikum",
+              textAlign: TextAlign.start,
+              style: TextStyles.font18GreyMedium,
+            ),
+            verticalSpace(22),
+            CustomHomeCard(lastSurahName: lastSurah ?? "Start Read"),
+            verticalSpace(50),
+            CustomTabBar(
+              currentIndex: _currentIndex,
+              label1: "Surah",
+              label2: "Juz",
+              label3: "Page",
+              onTabSelected: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+            ),
+            verticalSpace(20),
+
+            Expanded(
               child: IndexedStack(
                 index: _currentIndex,
                 children: [SurahListPage(), JuzListPage(), PageListPage()],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -6,6 +6,7 @@ import 'package:quraanapp/core/routing/app_router.dart';
 import 'package:quraanapp/core/theiming/colors.dart';
 import 'package:quraanapp/core/theiming/font_weight_helper.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
+import 'package:quraanapp/features/quraan/get_mushaf/widgets/ayah_box_icons.dart';
 import 'package:quraanapp/features/quraan/get_mushaf/widgets/quraan_single_ayah_text.dart';
 
 class AyahBox extends StatelessWidget {
@@ -13,65 +14,20 @@ class AyahBox extends StatelessWidget {
     super.key,
     required this.SurahNumber,
     required this.ayaText,
-    required this.AyahNumber,
+    required this.AyahNumber, required this.url,
   });
   final String SurahNumber;
   final String ayaText;
   final String AyahNumber;
+  final String url;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Container(
-          height: 45.h,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12.r),
-            color: ColorsManager.gray.withOpacity(.1),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  radius: 12.r,
-                  backgroundColor: ColorsManager.logoColor,
-                  child: Center(
-                    child: Text(
-                      AyahNumber,
-                      style: TextStyles.font16Whitemedium,
-                    ),
-                  ),
-                ),
-                Spacer(),
-                Icon(
-                  Icons.share_outlined,
-                  color: ColorsManager.logoColor,
-                  size: 25.sp,
-                ),
-                horizontalSpace(12),
-                IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.play_arrow_outlined,
-                    color: ColorsManager.logoColor,
-                    size: 32.sp,
-                  ),
-                ),
-                horizontalSpace(12),
-                Icon(
-                  Icons.bookmark_outline_outlined,
-                  color: ColorsManager.logoColor,
-                  size: 26.sp,
-                ),
-              ],
-            ),
-          ),
-        ),
+       AyahBoxIcons(AyahNumber: AyahNumber,
+        url:url),
         verticalSpace(18),
         GestureDetector(
           onDoubleTap: () {

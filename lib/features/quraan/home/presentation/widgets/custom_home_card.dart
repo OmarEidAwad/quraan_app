@@ -14,7 +14,7 @@ class CustomHomeCard extends StatelessWidget {
       onTap: () {},
       child: Container(
         width: double.infinity,
-        height: 130.h,
+        height: 125.h,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -32,36 +32,29 @@ class CustomHomeCard extends StatelessWidget {
         ),
         child: Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 22.0,
-            ),
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 22.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        "assets/images/images_svg/small_mushaf_icon.svg",
-                      ),
-                      SizedBox(width: 8.w),
-                      Text("Last Read", style: TextStyles.font14WhiteMedium),
-                    ],
-                  ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SvgPicture.asset(
+                      "assets/images/images_svg/small_mushaf_icon.svg",
+                      fit: BoxFit.fill,
+                    ),
+                    SizedBox(width: 8.w),
+                    Text("Last Read", style: TextStyles.font14WhiteMedium),
+                  ],
                 ),
                 verticalSpace(12),
-                Text(lastSurahName, style: TextStyles.font22WhiteExtraBold),
-                verticalSpace(22),
-                // Expanded(
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       Text("ا", style: TextStyles.font14WhiteRegular),
-                //     ],
-                //   ),
-                // ),
+                Expanded(
+                  child: Text(
+                    lastSurahName,
+                    style: TextStyles.font22WhiteExtraBold,
+                  ),
+                ),
               ],
             ),
           ),

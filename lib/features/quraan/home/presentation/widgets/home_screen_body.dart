@@ -68,7 +68,7 @@ void loadLastSurah() async {
 
             lastSurahName: lastSurah??"Start Read" 
           ),
-          verticalSpace(32),
+          verticalSpace(50),
           CustomTabBar(
             currentIndex: _currentIndex,
             label1: "Surah",

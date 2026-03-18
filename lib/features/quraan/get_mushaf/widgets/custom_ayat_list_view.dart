@@ -24,6 +24,11 @@ class CustomAyatListView extends StatelessWidget {
               itemCount: data.data.surahs[int.parse(surahNumber)-1].ayahs.length,
               itemBuilder: (BuildContext context, int index) {
                 return AyahBox(
+                  url: data
+                      .data
+                      .surahs[int.parse(surahNumber) - 1]
+                      .ayahs[index]
+                      .audio,
                   AyahNumber: data
                       .data
                       .surahs[int.parse(surahNumber) - 1]

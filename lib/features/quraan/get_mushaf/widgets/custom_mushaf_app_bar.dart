@@ -11,9 +11,11 @@ class CustomMushafAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.grey, width: 1)),
+        border: Border(
+          bottom: BorderSide(color: Colors.grey.shade400, width: 1),
+        ),
 
-        color: ColorsManager.milkColor,
+        color: ColorsManager.mushafColor,
       ),
       child: Row(
         children: [

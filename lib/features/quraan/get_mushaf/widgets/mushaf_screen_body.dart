@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:quraanapp/features/quraan/get_mushaf/custom_mushaf_app_bar.dart';
+import 'package:quraanapp/core/helpers/shared_pref_helper.dart';
+import 'package:quraanapp/features/quraan/get_mushaf/widgets/custom_mushaf_app_bar.dart';
 import 'package:quraanapp/features/quraan/get_mushaf/widgets/build_surah_text_rich.dart';
 
 import 'package:quraanapp/features/quraan/home/logic/cubit/quraan_cubit.dart';
@@ -36,6 +37,7 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
             return Center(child: CircularProgressIndicator());
           },
           success: (data) {
+           
             if (pageController == null) {
               int pageNumber = data
                   .data
@@ -46,9 +48,8 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
               pageController = PageController(initialPage: pageNumber - 1);
             }
             return Column(
-              children: [CustomMushafAppBar(
-                 
-                  
+              children: [
+                CustomMushafAppBar(
                   title: currentPage == 0
                       ? data.data.surahs[int.parse(widget.SurahNumber) - 1].name
                       : data.data.surahs
@@ -56,8 +57,9 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
                               (s) =>
                                   s.ayahs.any((a) => a.page == currentPage + 1),
                             )
-                            .name,),
-               
+                            .name,
+                ),
+
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
@@ -73,6 +75,8 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
                       },
                       itemBuilder: (context, index) {
                         return ListView(
+                          physics: const BouncingScrollPhysics(),
+
                           scrollDirection: Axis.vertical,
                           children: [
                             RichText(

@@ -2,29 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quraanapp/core/helpers/shared_pref_helper.dart';
 import 'package:quraanapp/core/helpers/spacing.dart';
 import 'package:quraanapp/core/routing/app_router.dart';
 import 'package:quraanapp/core/theiming/colors.dart';
 import 'package:quraanapp/core/theiming/styles.dart';
 
-class CustomAyatPurpleCard extends StatelessWidget {
+class CustomAyatPurpleCard extends StatefulWidget {
   const CustomAyatPurpleCard({
     super.key,
     required this.enName,
     required this.verses,
-    required this.country, required this.SurahNumber,
+    required this.country,
+    required this.SurahNumber,
   });
   final String enName;
   final String verses;
   final String country;
-  final String SurahNumber ;
+  final String SurahNumber;
+
   @override
+  State<CustomAyatPurpleCard> createState() => _CustomAyatPurpleCardState();
+}
+
+class _CustomAyatPurpleCardState extends State<CustomAyatPurpleCard> {
+  @override
+  void initState() {
+    super.initState();
+    SharedPrefHelper.saveLastSurah(widget.enName);
+  }
+
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {            context.push(AppRoute.mushafScreen, extra: SurahNumber);
-},
+      onTap: () {
+        context.push(AppRoute.mushafScreen, extra: widget.SurahNumber);
+      },
       child: Container(
-        height: enName == "At-Tawba" || enName == "Al-Faatiha" ? 185.h : 250.h,
+        height: widget.enName == "At-Tawba" || widget.enName == "Al-Faatiha"
+            ? 190.h
+            : 255.h,
         width: double.infinity,
         decoration: BoxDecoration(
           boxShadow: [
@@ -42,12 +58,12 @@ class CustomAyatPurpleCard extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 25),
+          padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(enName, style: TextStyles.font26WhiteExtraBold),
+              Text(widget.enName, style: TextStyles.font26WhiteExtraBold),
               verticalSpace(16),
               Divider(
                 color: Colors.white.withOpacity(0.4),
@@ -60,12 +76,15 @@ class CustomAyatPurpleCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(country, style: TextStyles.font14WhiteRegular),
+                  Text(widget.country, style: TextStyles.font14WhiteRegular),
                   horizontalSpace(12),
-                  Text("${verses} verses", style: TextStyles.font14WhiteRegular),
+                  Text(
+                    "${widget.verses} verses",
+                    style: TextStyles.font14WhiteRegular,
+                  ),
                 ],
               ),
-              enName == "At-Tawba" || enName == "Al-Faatiha"
+              widget.enName == "At-Tawba" || widget.enName == "Al-Faatiha"
                   ? verticalSpace(2)
                   : Container(
                       height: 40.h,
@@ -75,6 +94,17 @@ class CustomAyatPurpleCard extends StatelessWidget {
                         fit: BoxFit.fill,
                       ),
                     ),
+              Expanded(
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/images/images_svg/small_mushaf_icon.svg",
+                    ),
+                    SizedBox(width: 8.w),
+                    Text("عرض المصحف", style: TextStyles.font14WhiteMedium),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

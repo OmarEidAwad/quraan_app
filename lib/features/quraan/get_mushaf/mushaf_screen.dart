@@ -13,7 +13,7 @@ class MushafScreen extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 249, 249, 247),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(0),
-        child: AppBar(elevation: 0, backgroundColor: ColorsManager.milkColor),
+        child: AppBar(elevation: 0, backgroundColor: ColorsManager.mushafColor),
       ),
       body: SafeArea(child: MushafScreenBody(SurahNumber: surahNum)),
     );

@@ -15,23 +15,18 @@ abstract class AppRoute {
 
   static final router = GoRouter(
     routes: [
-      GoRoute(
+ 
+       GoRoute(
         path: homeScreen,
-        builder: (context, state) => const HomeScreen(),
+        builder: (context, state) => HomeScreen(),
       ),
       GoRoute(
         path: surahDetailsScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) => QuranCubit(getIt<QuranRepository>())..getQuran(),
-          child: SurahDetailsScreen(),
-        ),
+        builder: (context, state) => SurahDetailsScreen(),
       ),
       GoRoute(
         path: mushafScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) => QuranCubit(getIt<QuranRepository>())..getQuran(),
-          child: const MushafScreen(),
-        ),
+        builder: (context, state) => const MushafScreen(),
       ),
     ],
   );

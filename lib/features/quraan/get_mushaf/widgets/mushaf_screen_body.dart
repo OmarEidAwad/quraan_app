@@ -37,7 +37,6 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
             return Center(child: CircularProgressIndicator());
           },
           success: (data) {
-           
             if (pageController == null) {
               int pageNumber = data
                   .data
@@ -58,6 +57,13 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
                                   s.ayahs.any((a) => a.page == currentPage + 1),
                             )
                             .name,
+                  currentPage: currentPage == 0
+                      ? data
+                            .data
+                            .surahs[int.parse(widget.SurahNumber) - 1]
+                            .ayahs[0]
+                            .page
+                      : currentPage + 1,
                 ),
 
                 Expanded(

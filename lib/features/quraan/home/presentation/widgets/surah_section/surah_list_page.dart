@@ -12,6 +12,7 @@ class SurahListPage extends StatefulWidget {
 }
 
 class _SurahListPageState extends State<SurahListPage> {
+ 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<QuranCubit, QuranState>(
@@ -25,6 +26,7 @@ class _SurahListPageState extends State<SurahListPage> {
           },
           success: (data) {
             return ListView.builder(
+              physics:  BouncingScrollPhysics(),
               itemCount: 114,
               itemBuilder: (BuildContext context, int index) {
                 return CustomSurahCard(

@@ -23,8 +23,6 @@ class _AyahBoxIconsState extends State<AyahBoxIcons> {
     super.dispose();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,26 +57,29 @@ class _AyahBoxIconsState extends State<AyahBoxIcons> {
             IconButton(
               padding: EdgeInsets.zero,
               onPressed: () {
-               if (isPlaying) {
-       audioPlayer.pause();
-      setState(() => isPlaying = false);
-    } else {
-     audioPlayer.play(UrlSource(widget.url));
-      setState(() => isPlaying = true);
+                if (isPlaying) {
+                  audioPlayer.pause();
+                  setState(() => isPlaying = false);
+                } else {
+                  audioPlayer.play(UrlSource(widget.url));
+                  setState(() => isPlaying = true);
 
-      audioPlayer.onPlayerComplete.listen((event) {
-        setState(() {
-          isPlaying = false;
-        });
-      });
-    }
+                  audioPlayer.onPlayerComplete.listen((event) {
+                    setState(() {
+                      isPlaying = false;
+                    });
+                  });
+                }
               },
-              icon: Icon(
-                isPlaying
-                    ? Icons.pause_circle_outline
-                    : Icons.play_arrow_outlined,
-                color: ColorsManager.logoColor,
-                size: 32.sp,
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: Icon(
+                  isPlaying
+                      ? Icons.pause_circle_outline
+                      : Icons.play_arrow_outlined,
+                  color: ColorsManager.logoColor,
+                  size: 28.sp,
+                ),
               ),
             ),
             horizontalSpace(12),

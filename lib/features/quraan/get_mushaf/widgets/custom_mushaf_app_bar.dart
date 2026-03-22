@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:quraanapp/core/helpers/extentions.dart';
 import 'package:quraanapp/core/theiming/colors.dart';
 import 'package:quraanapp/core/theiming/font_weight_helper.dart';
 
 class CustomMushafAppBar extends StatelessWidget {
-  const CustomMushafAppBar({super.key, required this.title});
+  const CustomMushafAppBar({
+    super.key,
+    required this.title,
+    required this.currentPage,
+  });
   final String title;
+  final int currentPage;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,7 @@ class CustomMushafAppBar extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              context.pop();
             },
             icon: FaIcon(
               FontAwesomeIcons.arrowLeft,
@@ -39,6 +45,15 @@ class CustomMushafAppBar extends StatelessWidget {
                 fontFamily: 'poppins',
                 color: const Color.fromARGB(255, 98, 98, 107),
               ),
+            ),
+          ),
+          Text(
+            "الصفحه ${currentPage}  ",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeightHelper.medium,
+              fontFamily: 'poppins',
+              color: const Color.fromARGB(255, 98, 98, 107),
             ),
           ),
           IconButton(

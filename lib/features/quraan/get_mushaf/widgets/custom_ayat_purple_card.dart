@@ -35,7 +35,7 @@ class _CustomAyatPurpleCardState extends State<CustomAyatPurpleCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoute.mushafScreen, extra: widget.SurahNumber);
+        context.pushNamed(AppRoute.quranScreen, extra: widget.SurahNumber);
       },
       child: Container(
         height: widget.enName == "At-Tawba" || widget.enName == "Al-Faatiha"

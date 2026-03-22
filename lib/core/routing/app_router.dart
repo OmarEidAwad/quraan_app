@@ -11,30 +11,31 @@ import 'package:quraanapp/features/quraan/get_mushaf/surah_details_screen.dart';
 import 'package:quraanapp/features/quraan/home/presentation/widgets/home_screen.dart';
 
 abstract class AppRoute {
-  static const String homeScreen = "/";
-  static const String surahDetailsScreen = "/surah-details";
-  static const String quranScreen = "/quran_screen";
-  static const String searchScreen = "/search-screen";
+  static const String homeScreen = "home";
+  static const String surahDetailsScreen = "surahDetails";
+  static const String quranScreen = "quranScreen";
+  static const String searchScreen = "searchScreen";
 
   static final router = GoRouter(
     routes: [
       GoRoute(
-        path: homeScreen,
+        path: "/",
         name: homeScreen,
         builder: (context, state) => HomeScreen(),
       ),
       GoRoute(
-        path: surahDetailsScreen,
+        path: "/surah-details",
         name: surahDetailsScreen,
         builder: (context, state) => SurahDetailsScreen(),
       ),
       GoRoute(
-        path: quranScreen,
+        path: "/quran_screen",
         name: quranScreen,
-        builder: (context, state) => MushafScreen(),
+        builder: (context, state) =>
+            MushafScreen(surahNum: state.extra as String?),
       ),
       GoRoute(
-        path: searchScreen,
+        path: "/search-screen",
         name: searchScreen,
         builder: (context, state) => BlocProvider(
           create: (context) => SearchCubit(getIt<SearchRepository>()),

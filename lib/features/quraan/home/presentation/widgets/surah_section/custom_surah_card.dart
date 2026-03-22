@@ -101,9 +101,9 @@ class CustomSurahCard extends StatelessWidget {
 }
 
 class Args {
-  final String enName;
-  final String country;
-  final String verses;
-  final String number;
+  String? enName;
+  String? country;
+  String? verses;
+  String? number;
   Args(this.enName, this.country, this.verses, this.number);
 }

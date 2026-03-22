@@ -30,7 +30,7 @@ class _CustomAyatListViewState extends State<CustomAyatListView> {
 
   @override
   Widget build(BuildContext context) {
-    String? finalSurahNumber = widget.surahNumber ?? surahNumFromSearch;
+    String? finalSurahNumber = widget.surahNumber ??  surahNumFromSearch;
     return BlocBuilder<QuranCubit, QuranState>(
       builder: (context, state) {
         return state.when(

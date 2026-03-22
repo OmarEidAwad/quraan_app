@@ -63,12 +63,6 @@ class SearchScreenBody extends StatelessWidget {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SurahDetailsScreen(),
-                                  ),
-                                );
                                 SharedPrefHelper.saveSurahNumFromSearch(
                                   match.surah.number.toString(),
                                 );

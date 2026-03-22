@@ -14,7 +14,8 @@ class AyahBox extends StatelessWidget {
     super.key,
     required this.SurahNumber,
     required this.ayaText,
-    required this.AyahNumber, required this.url,
+    required this.AyahNumber,
+    required this.url,
   });
   final String SurahNumber;
   final String ayaText;
@@ -26,12 +27,11 @@ class AyahBox extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-       AyahBoxIcons(AyahNumber: AyahNumber,
-        url:url),
+        AyahBoxIcons(AyahNumber: AyahNumber, url: url),
         verticalSpace(18),
         GestureDetector(
           onDoubleTap: () {
-            context.push(AppRoute.mushafScreen, extra: SurahNumber);
+            context.pushNamed(AppRoute.quranScreen, extra: SurahNumber);
           },
           child: Container(
             constraints: BoxConstraints(minHeight: 16.h),

@@ -7,6 +7,7 @@ import 'package:quraanapp/quraan_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
 
   await setupGetIt();
   final quranCubit = QuranCubit(getIt<QuranRepository>());

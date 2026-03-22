@@ -4,7 +4,7 @@ part 'quran_model.freezed.dart';
 part 'quran_model.g.dart';
 
 @freezed
-class QuranResponse with _$QuranResponse {
+abstract class QuranResponse with _$QuranResponse {
   const factory QuranResponse({
     required int code,
     required String status,
@@ -16,7 +16,7 @@ class QuranResponse with _$QuranResponse {
 }
 
 @freezed
-class QuranData with _$QuranData {
+abstract class QuranData with _$QuranData {
   const factory QuranData({required List<Surah> surahs}) = _QuranData;
 
   factory QuranData.fromJson(Map<String, dynamic> json) =>
@@ -24,7 +24,7 @@ class QuranData with _$QuranData {
 }
 
 @freezed
-class Surah with _$Surah {
+abstract class Surah with _$Surah {
   const factory Surah({
     required int number,
     required String name,
@@ -38,7 +38,7 @@ class Surah with _$Surah {
 }
 
 @freezed
-class Ayah with _$Ayah {
+abstract class Ayah with _$Ayah {
   const factory Ayah({
     required int number,
     required String audio,

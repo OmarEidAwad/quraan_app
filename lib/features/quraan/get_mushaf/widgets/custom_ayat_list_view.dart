@@ -1,15 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quraanapp/core/helpers/shared_pref_helper.dart';
 import 'package:quraanapp/features/quraan/get_mushaf/widgets/ayah_Box.dart';
+import 'package:quraanapp/features/quraan/home/data/model/quran_model.dart';
 import 'package:quraanapp/features/quraan/home/logic/cubit/quraan_cubit.dart';
 import 'package:quraanapp/features/quraan/home/logic/cubit/quraan_state.dart';
 
-class CustomAyatListView extends StatelessWidget {
+class CustomAyatListView extends StatefulWidget {
   const CustomAyatListView({super.key, required this.surahNumber});
-  final String surahNumber;
-  
+  final String? surahNumber;
+
+  @override
+  State<CustomAyatListView> createState() => _CustomAyatListViewState();
+}
+
+class _CustomAyatListViewState extends State<CustomAyatListView> {
+  String? surahNumFromSearch;
+
+  @override
+  void initState() {
+    super.initState();
+    loadSurahNumber();
+  }
+
+  void loadSurahNumber() async {
+    surahNumFromSearch = await SharedPrefHelper.getSurahNumFromSearch();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    String? finalSurahNumber = widget.surahNumber ?? surahNumFromSearch;
     return BlocBuilder<QuranCubit, QuranState>(
       builder: (context, state) {
         return state.when(
@@ -20,27 +41,16 @@ class CustomAyatListView extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           },
           success: (data) {
+            Surah our_surah =
+                data.data.surahs[int.parse(finalSurahNumber!) - 1];
             return ListView.builder(
-              itemCount: data.data.surahs[int.parse(surahNumber)-1].ayahs.length,
+              itemCount: our_surah.ayahs.length,
               itemBuilder: (BuildContext context, int index) {
                 return AyahBox(
-                  url: data
-                      .data
-                      .surahs[int.parse(surahNumber) - 1]
-                      .ayahs[index]
-                      .audio,
-                  AyahNumber: data
-                      .data
-                      .surahs[int.parse(surahNumber) - 1]
-                      .ayahs[index]
-                      .numberInSurah
-                      .toString(),
-                  SurahNumber: surahNumber,
-                  ayaText:  data
-                      .data
-                      .surahs[int.parse(surahNumber) - 1]
-                      .ayahs[index]
-                      .text,
+                  url: our_surah.ayahs[index].audio,
+                  AyahNumber: our_surah.ayahs[index].numberInSurah.toString(),
+                  SurahNumber: finalSurahNumber,
+                  ayaText: our_surah.ayahs[index].text,
                 );
               },
             );

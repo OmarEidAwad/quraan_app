@@ -27,10 +27,9 @@ class CustomSurahCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-
-        context.push(
+        context.pushNamed(
           AppRoute.surahDetailsScreen,
-          extra: Args(enName, country, verses, number)
+          extra: Args(enName, country, verses, number),
         );
       },
       child: Column(
@@ -46,7 +45,8 @@ class CustomSurahCard extends StatelessWidget {
                 horizontalSpace(20),
 
                 Expanded(
-                  child: Column(mainAxisSize: MainAxisSize.min,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -63,7 +63,12 @@ class CustomSurahCard extends StatelessWidget {
                       Expanded(
                         child: Row(
                           children: [
-                            Expanded(child: Text(country, style: TextStyles.font12GreyRegular)),
+                            Expanded(
+                              child: Text(
+                                country,
+                                style: TextStyles.font12GreyRegular,
+                              ),
+                            ),
                             horizontalSpace(8),
                             Expanded(
                               child: Text(

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:quraanapp/core/helpers/shared_pref_helper.dart';
+
 import 'package:quraanapp/features/quraan/get_mushaf/widgets/custom_mushaf_app_bar.dart';
 import 'package:quraanapp/features/quraan/get_mushaf/widgets/build_surah_text_rich.dart';
+import 'package:quraanapp/features/quraan/home/data/model/quran_model.dart';
 
 import 'package:quraanapp/features/quraan/home/logic/cubit/quraan_cubit.dart';
 import 'package:quraanapp/features/quraan/home/logic/cubit/quraan_state.dart';
-import 'package:quraanapp/features/quraan/home/presentation/widgets/custom_app_bar.dart';
 
 class MushafScreenBody extends StatefulWidget {
-  const MushafScreenBody({super.key, required this.SurahNumber});
+  const MushafScreenBody({super.key, required this.SurahNumber, });
   final String SurahNumber;
 
   @override
@@ -20,6 +19,7 @@ class MushafScreenBody extends StatefulWidget {
 class _MushafScreenBodyState extends State<MushafScreenBody> {
   PageController? pageController;
   int currentPage = 0;
+
   @override
   void dispose() {
     pageController?.dispose();
@@ -27,6 +27,7 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
   }
 
   Widget build(BuildContext context) {
+    
     return BlocBuilder<QuranCubit, QuranState>(
       builder: (context, state) {
         return state.when(
@@ -37,20 +38,21 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
             return Center(child: CircularProgressIndicator());
           },
           success: (data) {
+            Surah our_surah;
+
+          
+            our_surah = data.data.surahs[int.parse(widget.SurahNumber) - 1];
+
             if (pageController == null) {
-              int pageNumber = data
-                  .data
-                  .surahs[int.parse(widget.SurahNumber) - 1]
-                  .ayahs
-                  .first
-                  .page;
+              int pageNumber = our_surah.ayahs.first.page;
               pageController = PageController(initialPage: pageNumber - 1);
             }
+
             return Column(
               children: [
                 CustomMushafAppBar(
                   title: currentPage == 0
-                      ? data.data.surahs[int.parse(widget.SurahNumber) - 1].name
+                      ? our_surah.name
                       : data.data.surahs
                             .firstWhere(
                               (s) =>
@@ -58,11 +60,7 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
                             )
                             .name,
                   currentPage: currentPage == 0
-                      ? data
-                            .data
-                            .surahs[int.parse(widget.SurahNumber) - 1]
-                            .ayahs[0]
-                            .page
+                      ? our_surah.ayahs[0].page
                       : currentPage + 1,
                 ),
 
@@ -113,6 +111,3 @@ class _MushafScreenBodyState extends State<MushafScreenBody> {
     );
   }
 }
-  // String buildSurahText(List<Ayah> ayahs) {
-  //   return ayahs.map((ayah) => "${ayah.text}(${ayah.numberInSurah})").join("");
-  // }

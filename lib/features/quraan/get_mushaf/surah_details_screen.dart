@@ -14,7 +14,7 @@ class SurahDetailsScreen extends StatelessWidget {
         child: AppBar(elevation: 0, backgroundColor: Colors.transparent),
       ),
       body: SurahDetailsScreenBody(
-        args:  GoRouterState.of(context).extra as Args,
+        args: GoRouterState.of(context).extra as Args,
       ),
     );
   }

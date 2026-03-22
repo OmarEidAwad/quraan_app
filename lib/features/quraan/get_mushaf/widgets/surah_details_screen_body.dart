@@ -18,7 +18,6 @@ class SurahDetailsScreenBody extends StatefulWidget {
 
 class _SurahDetailsScreenBodyState extends State<SurahDetailsScreenBody> {
   @override
- 
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 22.0),
@@ -28,11 +27,10 @@ class _SurahDetailsScreenBodyState extends State<SurahDetailsScreenBody> {
         children: [
           CustomAppBar(
             ontap: () {
-              
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) => HomeScreen(),
-              ));
-
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
             },
             firstIcon: FontAwesomeIcons.arrowLeft,
             title: "${widget.args.enName}",
@@ -46,7 +44,9 @@ class _SurahDetailsScreenBodyState extends State<SurahDetailsScreenBody> {
           ),
           verticalSpace(32),
           Expanded(
-            child: CustomAyatListView(surahNumber: widget.args.number.toString()),
+            child: CustomAyatListView(
+              surahNumber: widget.args.number.toString(),
+            ),
           ),
         ],
       ),

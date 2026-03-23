@@ -29,7 +29,7 @@ class CustomSurahCard extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           AppRoute.surahDetailsScreen,
-          extra: Args(enName, country, verses, number),
+          extra: Args(arName, country, verses, number),
         );
       },
       child: Column(

@@ -13,7 +13,6 @@ class CustomPagesCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        //context.push(AppRoute.surahDetailsScreen);
       },
       child: Column(
         children: [

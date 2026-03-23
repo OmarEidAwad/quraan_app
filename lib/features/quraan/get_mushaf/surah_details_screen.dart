@@ -4,8 +4,8 @@ import 'package:quraanapp/features/quraan/get_mushaf/widgets/surah_details_scree
 import 'package:quraanapp/features/quraan/home/presentation/widgets/surah_section/custom_surah_card.dart';
 
 class SurahDetailsScreen extends StatelessWidget {
-  const SurahDetailsScreen({super.key});
-
+   SurahDetailsScreen({super.key,this.args});
+  Args? args;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class SurahDetailsScreen extends StatelessWidget {
         child: AppBar(elevation: 0, backgroundColor: Colors.transparent),
       ),
       body: SurahDetailsScreenBody(
-        args: GoRouterState.of(context).extra as Args,
+        args:args,// GoRouterState.of(context).extra as Args?,
       ),
     );
   }

@@ -10,7 +10,6 @@ import 'package:quraanapp/core/theiming/styles.dart';
 import 'package:quraanapp/features/quraan/Search/logic/search_cubit.dart';
 import 'package:quraanapp/features/quraan/Search/logic/search_state.dart';
 import 'package:quraanapp/features/quraan/Search/ui/search_screen.dart';
-import 'package:quraanapp/features/quraan/get_mushaf/widgets/surah_details_screen.dart';
 
 class SearchScreenBody extends StatelessWidget {
   const SearchScreenBody({super.key});
@@ -72,21 +71,31 @@ class SearchScreenBody extends StatelessWidget {
                                   textAlign: TextAlign.end,
 
                                   "${match.surah.name}",
-                                  style: TextStyles.font18BlackBold,
+                                  style: TextStyles.font16PurpleBold,
                                 ),
                                 subtitle: RichText(
+                                  textAlign: TextAlign.end,
+
                                   text: TextSpan(
                                     children: [
                                       WidgetSpan(
                                         child: Text(
-                                          "  ${match.text}",
+                                          " الآيه: ${match.text}  ",
+                                          textAlign: TextAlign.end,
+
                                           style: TextStyles.font16Whitemedium
-                                              .copyWith(color: Colors.black),
+                                              .copyWith(
+                                                color: Colors.black,
+                                                fontFamily: "Uthmanic",
+                                                fontWeight: FontWeight.w400,
+                                              ),
                                         ),
                                       ),
                                       WidgetSpan(
                                         child: Text(
-                                          "${match.numberInSurah}",
+                                          "(${match.numberInSurah})",
+                                          textAlign: TextAlign.end,
+
                                           style: TextStyles.font16Whitemedium
                                               .copyWith(color: Colors.black),
                                         ),

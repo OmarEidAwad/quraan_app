@@ -9,6 +9,7 @@ import 'package:quraanapp/features/quraan/get_mushaf/mushaf_screen.dart';
 
 import 'package:quraanapp/features/quraan/get_mushaf/surah_details_screen.dart';
 import 'package:quraanapp/features/quraan/home/presentation/widgets/home_screen.dart';
+import 'package:quraanapp/features/quraan/home/presentation/widgets/surah_section/custom_surah_card.dart';
 
 abstract class AppRoute {
   static const String homeScreen = "home";
@@ -26,7 +27,9 @@ abstract class AppRoute {
       GoRoute(
         path: "/surah-details",
         name: surahDetailsScreen,
-        builder: (context, state) => SurahDetailsScreen(),
+        builder: (context, state) => SurahDetailsScreen(
+          args: state.extra as Args?,
+        ),
       ),
       GoRoute(
         path: "/quran_screen",

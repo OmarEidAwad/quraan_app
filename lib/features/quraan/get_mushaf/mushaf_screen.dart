@@ -9,7 +9,7 @@ class MushafScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    surahNum = GoRouterState.of(context).extra as String;
+    // surahNum = GoRouterState.of(context).extra as String?;
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 249, 249, 247),
